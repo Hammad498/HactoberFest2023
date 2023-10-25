@@ -1,0 +1,51 @@
+//You can add tasks and display the tasks .
+//Made by using C++
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+int main() {
+    std::vector<std::string> tasks; // Using a vector to store multiple task names
+    int choice;
+
+    while (true) {
+        std::cout << "Task Management System" << std::endl;
+        std::cout << "1. Add Task" << std::endl;
+        std::cout << "2. List Tasks" << std::endl;
+        std::cout << "3. Exit" << std::endl;
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                std::string taskName;
+                std::cout << "Enter the task name: ";
+                std::cin.ignore(); // Clear the newline character from the input buffer
+                std::getline(std::cin, taskName);
+                tasks.push_back(taskName);
+                std::cout << "Task added successfully." << std::endl;
+                break;
+            }
+            case 2: {
+                if (tasks.empty()) {
+                    std::cout << "No tasks to display." << std::endl;
+                } else {
+                    std::cout << "Task List:" << std::endl;
+                    for (size_t i = 0; i < tasks.size(); i++) {
+                        std::cout << i + 1 << ". " << tasks[i] << std::endl;
+                    }
+                }
+                break;
+            }
+            case 3: {
+                std::cout << "Exiting the program." << std::endl;
+                return 0;
+            }
+            default:
+                std::cout << "Invalid choice. Please try again." << std::endl;
+        }
+    }
+
+    return 0;
+}
